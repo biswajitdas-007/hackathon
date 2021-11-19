@@ -5,3 +5,8 @@
   display: grid;
   grid-template-columns: repeat(5, 20%);
 }
+
+img {
+  height: 50px;
+  width: 50px;
+}

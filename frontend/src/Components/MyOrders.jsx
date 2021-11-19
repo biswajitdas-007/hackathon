@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from "./MyOrders.module.css";
+import { Link } from "react-router-dom";
 
 function MyOrders() {
     const params = useParams();
@@ -28,13 +29,15 @@ async function getData()
                 return (
                     <>
                         <div className={styles.box}>
+                            <div><h5>Product:</h5>{item.product}</div>
                         <div><h5>Sender Name:</h5>{item.senderName}</div>
                         <div><h5>Sender Address:</h5> {item.senderAddress}</div>
                         <div><h5>Reciever Name:</h5> {item.recieverName}</div>
                         <div><h5>Reciever Address:</h5> {item.recieverAddress}</div>
                         <div><h5>Pickup Time:</h5>{item.pickupTime}</div>
-                        <div><h5>Preferable Time:</h5> {item.preferableTime}</div>
-                            <button>Track Order</button>
+                            <div><h5>Preferable Time:</h5> {item.preferableTime}</div>
+                            <div><h5>SizePrice:</h5> {item.sizePrice}</div>
+                            <Link to={`/payment/${item._id}`}><button>Payment</button></Link>
                             </div>
                     </>
                 )
