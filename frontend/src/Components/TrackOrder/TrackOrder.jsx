@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
-import CustomizedSteppers from "./ProgressBar";
+import CustomizedSteppers from "../ProgressBar";
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
-import Details from "./Details";
-import styles from "./TrackOrder.module.css";
+import Details from "../Details";
 
 const TrackOrders = () => {
     const { productId } = useParams();
