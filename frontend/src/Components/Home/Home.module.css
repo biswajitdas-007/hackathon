@@ -82,4 +82,12 @@ select{
 }
 .submit{
     margin-left: 150px;
+    width: 150px;
+    background-color: orangered;
+    color: white;
+    font-weight: 400;
+    font-size: large;
+}
+.location > img , .mail > img{
+    height: 50px;
 }

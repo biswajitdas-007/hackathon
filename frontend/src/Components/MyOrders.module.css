@@ -1,7 +1,0 @@
-.box {
-  height: 200px;
-  width: 100%;
-  border: 2px solid black;
-  display: grid;
-  grid-template-columns: repeat(5, 20%);
-}

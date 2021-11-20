@@ -15,13 +15,13 @@ function Home() {
         recieverName: "",
         recieverAddress: "",
         pickupTime: "",
-        preferableTime: "",
-        sizePrice:""
+        preferableTime: ""
+        // sizePrice:""
     }
     const [data, setData] = useState(initState);
     
     const { product, senderName, senderAddress, recieverName, recieverAddress,
-    pickupTime, preferableTime, sizePrice } = data;
+    pickupTime, preferableTime } = data;
     function handleChange(e)
     {
         const { name, value } = e.target;
@@ -30,8 +30,10 @@ function Home() {
 
     async function handleSubmit(e)
     {
-        e.preventDefault();
-        const response = await axios.post("http://localhost:8000/book", data);
+      e.preventDefault();
+      const response = await axios.post("http://localhost:8000/book", data);
+      setData(initState);
+      alert("Your order is sucessfully booked, Go to My Orders section");
     }
 
     return (
@@ -56,11 +58,15 @@ function Home() {
         <div className={styles.menubar}>
           <button>HOME</button>
           <button>ABOUT US</button>
-          <button>SERVICES</button>
-          <button>OUR WORK</button>
           <button>CONTACT US</button>
           <Link to={`/myorders`}>
-            <button className={styles.btn}>My Orders</button>
+            <button className={styles.btn}>MY ORDERS</button>
+          </Link>
+          <Link to={`/customerlogin`}>
+            <button className={styles.btn}>CUSTOMER LOGIN</button>
+          </Link>
+          <Link to={`deliveryagentlogin`}>
+            <button className={styles.btn}>DELIVERY AGENT LOGIN</button>
           </Link>
         </div>
 
@@ -129,8 +135,8 @@ function Home() {
                 onChange={handleChange}
                 placeholder="Enter preferable delivery time"
               />
-              <br />
-              <select
+              {/* <br /> */}
+              {/* <select
                 name="sizePrice"
                 value={sizePrice}
                 onChange={handleChange}
@@ -139,7 +145,7 @@ function Home() {
                 <option>small--₹100</option>
                 <option>medium--₹150</option>
                 <option>Large--₹200</option>
-              </select>
+              </select> */}
               <br />
               <input className={styles.submit} type="submit" value="Book" />
             </div>
