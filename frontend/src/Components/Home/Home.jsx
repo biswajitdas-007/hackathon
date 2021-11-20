@@ -15,7 +15,8 @@ function Home() {
         recieverName: "",
         recieverAddress: "",
         pickupTime: "",
-        preferableTime: ""
+      preferableTime: "",
+      payment: false,
         // sizePrice:""
     }
     const [data, setData] = useState(initState);

@@ -8,28 +8,18 @@ import { StateContext } from '../../Context/StateProvider';
 import styles from "./MyOrders.module.css";
 function MyOrders() {
      const params = useParams();
-    const { isAuth } = useContext(StateContext);
-    const [list, setList] = useState([]);
-    
-useEffect(() => {
-    getData();
-}, []);
-
-  async function getData(){
-        const response = await axios.get("http://localhost:8000/book")
-        const data = response.data;
-        setList(data);
-        console.log(data);
-    }
+    const { isAuth, list } = useContext(StateContext);
+    //const [list, setList] = useState([]);
+    console.log("list: ", list)
     const handleCancel = (id) => {
         
         console.log(id,'id')
          axios.delete(`http://localhost:8000/book/${id}`)
          .then(res=>{
              const del= list.filter(item=>id!==item._id)
-             setList(del)
+             
          })
-        // setList(response.data)
+        
         console.log(list)
     }
     
@@ -37,10 +27,11 @@ useEffect(() => {
             <>
             <h1>Booking Order</h1>
             <div className={styles.mainCont}>
-            {list && list.map((item) => {
+                {list && list.map((item) => {
+                console.log(item)
                 return (
                     <>
-                        <div className={styles.box}>
+                        <div className={styles.box} key={item._id}>
                             <div><b>PRODUCT : </b>{item.product}</div><br />
                         <div className={styles.insideBox}><b>SENDER NAME : </b> {item.senderName}</div><br />
                         <div className={styles.insideBox}><b>SENDER ADDRESS : </b> {item.senderAddress}</div><br />
@@ -51,7 +42,7 @@ useEffect(() => {
                             {/* <div><b>SizePrice:</b> {item.sizePrice}</div> */}
                             <div className={styles.butCont}>
                                 {console.log("auth: ", isAuth)}
-                                <button className={styles.but}>{isAuth ? <Link to={`/myorders/${item._id}`} className={styles.payTxt}>Track</Link> : <Link to={`/payment/${item._id}`} className={styles.payTxt}>Payment</Link>}</button>
+                                <button className={styles.but}>{item.payment ? <Link to={`/myorders/${item._id}`} className={styles.payTxt}>Track</Link> : <Link to={`/payment/${item._id}`} className={styles.payTxt}>Payment</Link>}</button>
                             <button onClick={()=>handleCancel(item._id)}className={styles.but2}><Link to={`/myorders`} className={styles.payTxt}>Cancel Order</Link></button>
                             </div>
                             </div>

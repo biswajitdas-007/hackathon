@@ -4,20 +4,36 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Payment.module.css";
 import { Link } from "react-router-dom";
+import io from "socket.io-client";
 import { useContext } from 'react';
 import { StateContext } from '../../Context/StateProvider';
 
 function Payment() {
     const params = useParams();
-    const { toggleAuth } = useContext(StateContext);
+    const { toggleAuth, list , togglePayment} = useContext(StateContext);
     const [product, setProduct] = useState([]);
+    const [price, setPrice] = useState();
+    const socket = io.connect("http://localhost:4000");
     const handlePayment = () => {
+        list.map((item) => {
+            return item._id===product._id ? togglePayment(item._id):console.log('Bye35343')
+        })
         toggleAuth(true)
     }
-     useEffect(() => {
-    getData();
-     }, []);
-    
+    useEffect(() => {
+        getData();
+         socket.on("tracker", (payload) => {
+            console.log("PaymentPayload: ", payload)
+            if (payload.message === "150") {
+                setPrice(150)
+            }else if (payload.message === "250") {
+                setPrice(250)
+            }
+            else if (payload.message === "350") {
+                setPrice(350)
+            }
+        });
+    }, []);
      async function getData() {
          const { data }  = await axios.get(`http://localhost:8000/book/${params.id}`);
      console.log(data);
@@ -26,6 +42,7 @@ function Payment() {
     return (
         <div>
             <h1>Payment Page</h1>
+            {price > 0 && <h3>Amount to be paid: {price}</h3> }
             <div className={styles.MainContainer}>
             <div className={styles.box}>
             <div className={styles.insideBox}><b>Details of the product</b></div>

@@ -38,7 +38,14 @@ const Track = () => {
         <button onClick={() => { sendChat("placed") }}>Placed</button>
         <button onClick={()=>{sendChat("pickedUp")}}>Order Pickedup</button>
         <button onClick={()=>{sendChat("ontheway")}}>Order Dispatch</button>
-        <button onClick={()=>{sendChat("delivered")}}>Deliverd</button>
+        <button onClick={() => { sendChat("delivered") }}>Deliverd</button>
+        <div>
+          <h1>price are</h1>
+          <button onClick={() => { sendChat("150") }}>Price: 150</button>
+          <button onClick={() => { sendChat("250") }}>Price: 250</button>
+          <button onClick={() => { sendChat("350") }}>Price: 350</button>
+        </div>
+        
         </div>
     )
 }

@@ -166,7 +166,6 @@ export default function CustomizedSteppers({productId}) {
     //setInterval(time, 1000);
     useEffect( () => {
          socket.on("tracker", (payload) => {
-            console.log("Payload: ", payload)
             if (payload.message === "placed") {
                 setCompletedStep(completedStep + 1);
                 time();
@@ -190,7 +189,7 @@ export default function CustomizedSteppers({productId}) {
                  return  <Step key={label} sx={{ color: "white" }}>
                       
                      {label == "Order Picked Up" ? <StepLabel StepIconComponent={ColorlibStepIcon} style={{ color: "orange" }}> <h3 >{label}</h3> <h5 >{`${completedStep == 0 ? "Expected time: " + pickUpTime : completedStep == 0 ? pickUpTime: ""}`}</h5>  </StepLabel>
-                         : label == "Delivered" ? <StepLabel StepIconComponent={ColorlibStepIcon} style={{ color: "orange" }}> <h3 >{label}</h3> <h5 style={{color:"white"}}>{`${completedStep===3?pickUpTime: hours + 1}  PM`}</h5> </StepLabel> : <StepLabel StepIconComponent={ColorlibStepIcon} style={{ color: "orange" }}> <h3 >{label}</h3> </StepLabel>}
+                         : label == "Delivered" ? <StepLabel StepIconComponent={ColorlibStepIcon} style={{ color: "orange" }}> <h3 >{label}</h3> <h5 style={{color:"white"}}>{`${completedStep===3?pickUpTime: hours + 1}`}</h5> </StepLabel> : <StepLabel StepIconComponent={ColorlibStepIcon} style={{ color: "orange" }}> <h3 >{label}</h3> </StepLabel>}
                       
                   </Step>
               })}

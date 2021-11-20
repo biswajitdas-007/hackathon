@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState, useRef } from 'react'
+import { Link, Redirect } from "react-router-dom";
 import styles from "./CustomerLogin.module.css";
 import axios from "axios";
-
+import { StateContext } from '../../Context/StateProvider';
 const initState = {
     username: "",
     password:"",
@@ -11,10 +11,12 @@ const routes = {
   home: "/"
 }
 function CustomerLogin() {
+  const mountedRef = useRef(true)
   const [userNames, setUserNames] = useState([]);
   const [data, setData] = useState(initState);
   const [auth, setAuth] = useState(false);
-    const { username, password } = data;
+  const { username, password } = data;
+  const { toggleCustomerAuth, customerAuth } = useContext(StateContext);
   function handleChange(e)
     {
         const { name, value } = e.target;
@@ -22,9 +24,19 @@ function CustomerLogin() {
   }
   const handleLogin = () => {
     console.log(data, userNames)
-    userNames.map((user) => {
-      return user.username == data.username && user.password == data.password ? setAuth(true): alert("Wrong Credentials")
+    var isCorrect = userNames.filter((user) => {
+      console.log(data.username, data.password, user.username, user.password)
+     if ((user.username == data.username) && (user.password == data.password)) {
+       return true;
+     } else {
+       return false;
+      } 
     })
+    if (isCorrect.length > 0) {
+      toggleCustomerAuth()
+    } else {
+      console.log("Bye")
+    }
   }
   const getData = async() => {
     const response = await axios.get("http://localhost:8000/user")
@@ -32,6 +44,8 @@ function CustomerLogin() {
         setUserNames(data)
   }
   useEffect(() => {
+     
+      mountedRef.current = false
     getData();
   },[])
     return (
@@ -49,7 +63,8 @@ function CustomerLogin() {
                 onChange={handleChange} />
         <br />
         <br />
-        {auth ? <Link to={`/`}> <button className={styles.btn1} onClick={handleLogin} >Login</button> </Link> :<Link to={`/customerlogin`}> <button className={styles.btn1} onClick={handleLogin} >Login</button> </Link> }
+        {customerAuth && <Redirect to="/"/> }
+        <Link to={`${customerAuth?"/":"/customerlogin"}`}> <button className={styles.btn1} onClick={handleLogin} >Login</button> </Link>
         <br />
         <h4>New to Parcel Express? Create an account</h4>
        <Link to={`/customersignup`}> <button className={styles.btn1} >SignUp</button> </Link>

@@ -8,7 +8,8 @@ const bookSchema = new mongoose.Schema({
     recieverName: { type: String, required: true },
     recieverAddress: { type: String, required: true },
     pickupTime: { type: String, required: true },
-    preferableTime: { type: String, required: true }
+    preferableTime: { type: String, required: true },
+    payment: {type: Boolean, required: false}
 }, {
     versionKey: false
 })
