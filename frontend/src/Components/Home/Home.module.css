@@ -1,93 +1,97 @@
-.header{
-    display: grid;
-    grid-template-columns: repeat(3, 32%);
-   
-     /* background-color: rgb(105, 177, 177); */
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+
+  /* background-color: rgb(105, 177, 177); */
 }
-.name{
-    display: flex;
+.name {
+  display: flex;
 }
-.name > p{
-    font-size: xx-large;
-    font-weight: bolder;
-    margin-left: 30px;
-   margin-top: 10px;
-   color: brown;
-   margin-right: 0px;
+.name > p {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-left: 30px;
+  margin-top: 10px;
+  color: brown;
+  margin-right: 0px;
 }
-.name > img{
-    width: 120px;
-    height: 80px;
-    margin-left: -20px;
+.name > img {
+  width: 120px;
+  height: 80px;
+  margin-left: -20px;
 }
 
-.menubar{
-    background-color: #27282c;
-    float: left;
-    width: 100%;
-    position: relative;
-    height: 50px;
-    margin: auto;
-    margin-bottom: 50px;
-    gap:2%
+.menubar {
+  background-color: #27282c;
+  float: left;
+  width: 100%;
+  position: relative;
+  height: 50px;
+  margin: auto;
+  margin-bottom: 50px;
+  gap: 2%;
 }
-.menubar > button, .btn{
-    height: 100%;
-    width: 180px;
-    color: white;
-    background-color: #27282c;
+.menubar > button,
+.btn {
+  height: 100%;
+  width: 180px;
+  color: white;
+  background-color: #27282c;
 }
-.btn:hover, .menubar > button:hover {
+.btn:hover,
+.menubar > button:hover {
   color: red;
 }
 
-.location, .mail{
-display: flex;
-margin-top: 15px;
-margin-left: 100px;
+.location,
+.mail {
+  display: flex;
+  margin-top: 15px;
+  margin-left: 100px;
 }
-.location > p, .mail > p{
-    font-size: x-large;
-    font-weight: 500;
-    margin-left: 30px;
-   margin-top: 10px;
-   margin-right: 0px;
+.location > p,
+.mail > p {
+  font-size: x-large;
+  font-weight: 500;
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-right: 0px;
 }
-input{
-    border : 1px solid gray;
-    margin-top: 10px;
-    width: 250px;
-    height: 30px;
-    text-align: center;
-    border-radius: 8px;
+input {
+  margin-top: 10px;
+  width: 250px;
+  height: 30px;
+  text-align: center;
+  outline: none;
+  border-radius: 8px;
 }
-.form{
-     background-color: rgb(207, 207, 207);
-     padding-bottom: 50px;
+.form {
+  padding-bottom: 50px;
 }
 
-label{
-    font-size: large;
-    font-weight: 500;
+label {
+  font-size: large;
+  font-weight: 500;
 }
-select{
-    font-size: medium;
-    font-weight: 400;
-    width: 250px;
-    height: 30px;
-    text-align: center;
-    border-radius: 10px;
-    margin-left: 150px;
-    margin-top: 20px;
+select {
+  font-size: medium;
+  font-weight: 400;
+  width: 250px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 150px;
+  margin-top: 20px;
 }
-.submit{
-    margin-left: 150px;
-    width: 150px;
-    background-color: orangered;
-    color: white;
-    font-weight: 400;
-    font-size: large;
+.submit {
+  margin-left: 150px;
+  width: 150px;
+  background-color: orangered;
+  color: white;
+  font-weight: 400;
+  font-size: large;
 }
-.location > img , .mail > img{
-    height: 50px;
+.location > img,
+.mail > img {
+  height: 50px;
 }

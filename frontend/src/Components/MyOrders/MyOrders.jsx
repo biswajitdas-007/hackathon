@@ -8,24 +8,31 @@ import { StateContext } from '../../Context/StateProvider';
 import styles from "./MyOrders.module.css";
 function MyOrders() {
      const params = useParams();
-    const { isAuth, list } = useContext(StateContext);
+    const { isAuth, listFilter,list, updateList, getData } = useContext(StateContext);
     //const [list, setList] = useState([]);
+    const [data, setData] = useState([]);
     console.log("list: ", list)
     const handleCancel = (id) => {
-        
-        console.log(id,'id')
-         axios.delete(`http://localhost:8000/book/${id}`)
+        axios.delete(`http://localhost:8000/book/${id}`)
          .then(res=>{
-             const del= list.filter(item=>id!==item._id)
-             
+             const del = list.filter(item => id !== item._id)
+            updateList(del)
          })
-        
-        console.log(list)
     }
-    
+    // async function getData(){
+    //     // const response = await axios.get("http://localhost:8000/book")
+    //     // const data = response.data;
+    //     // setList(data);
+    //     setData(list)
+    // }
+    useEffect(() => {
+        getData();
+        console.log("data9080: ",data)
+        
+    },[])
     return (
             <>
-            <h1>Booking Order</h1>
+            <h1>Active Slots</h1>
             <div className={styles.mainCont}>
                 {list && list.map((item) => {
                 console.log(item)
