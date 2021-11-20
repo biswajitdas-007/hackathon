@@ -2,6 +2,11 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Logo from "../Images/logo.png";
+import mapIcon from "../Images/mapsIcon.png";
+import mail from "../Images/mail.jpg"
+import styles from "./Home.module.css";
+
 function Home() {
     const initState = {
         product: "",
@@ -30,37 +35,118 @@ function Home() {
     }
 
     return (
-        <div>
-            <h1>Parcel Express</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="product" value={product} onChange={handleChange} placeholder="Enter your product" />
-                <br/>
-                <input type="text" name="senderName" value={senderName} onChange={handleChange} placeholder="Enter sender name" />
-            <br />
-            <input type="text" name="senderAddress" value={senderAddress} onChange={handleChange} placeholder="Enter sender address" />
-            <br />
-            <input type="text" name="recieverName"  value={recieverName} onChange={handleChange} placeholder="Enter reciever name" />
-            <br />
-            <input type="text" name="recieverAddress"  value={recieverAddress} onChange={handleChange} placeholder="Enter reciever Address" />
-            <br />
-            <input type="text" name="pickupTime" value={pickupTime} onChange={handleChange} placeholder="Enter Pick-up Time" />
-            <br />
-            <input type="text" name="preferableTime" value={preferableTime} onChange={handleChange} placeholder="Enter preferable delivery time" />
-                <br />
-                <select name="sizePrice" value={sizePrice}  onChange={handleChange} >
-                    <option>size--Price</option>
-                    <option>small--₹100</option>
-                    <option>medium--₹150</option>
-                    <option>Large--₹200</option>
-                </select>
-                <br />
-                <input type="submit" value="Book" />
-            
-            </form>
+      <div>
+        <div className={styles.header}>
+          <div className={styles.name}>
+            <p>Parcel</p>
+            <img src={Logo} alt="/" />
+          </div>
 
-            <Link to={`/myorders`}><button>My Orders</button></Link>
+          <div className={styles.location}>
+            <img src={mapIcon} alt="/" />
+            <p>Hyderabad, India</p>
+          </div>
+
+          <div className={styles.mail}>
+            <img src={mail} alt="" />
+            <p>info@parcelexpress.in</p>
+          </div>
         </div>
-    )
+
+        <div className={styles.menubar}>
+          <button>HOME</button>
+          <button>ABOUT US</button>
+          <button>SERVICES</button>
+          <button>OUR WORK</button>
+          <button>CONTACT US</button>
+          <Link to={`/myorders`}>
+            <button className={styles.btn}>My Orders</button>
+          </Link>
+        </div>
+
+        <div className={styles.form}>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.inp}>
+              <label>Product :</label>
+              <input
+                type="text"
+                name="product"
+                value={product}
+                onChange={handleChange}
+                placeholder="Enter your product"
+              />
+              <br />
+              <label>Sender name : </label>
+              <input
+                type="text"
+                name="senderName"
+                value={senderName}
+                onChange={handleChange}
+                placeholder="Enter sender name"
+              />
+              <br />
+              <label>Sender Address : </label>
+              <input
+                type="text"
+                name="senderAddress"
+                value={senderAddress}
+                onChange={handleChange}
+                placeholder="Enter sender address"
+              />
+              <br />
+              <label>Receiver Name : </label>
+              <input
+                type="text"
+                name="recieverName"
+                value={recieverName}
+                onChange={handleChange}
+                placeholder="Enter reciever name"
+              />
+              <br />
+              <label>Receiver Address :</label>
+              <input
+                type="text"
+                name="recieverAddress"
+                value={recieverAddress}
+                onChange={handleChange}
+                placeholder="Enter reciever Address"
+              />
+              <br />
+              <label>Pickup Time : </label>
+              <input
+                type="text"
+                name="pickupTime"
+                value={pickupTime}
+                onChange={handleChange}
+                placeholder="Enter Pick-up Time"
+              />
+              <br />
+              <label>Prefarable Time : </label>
+              <input
+                type="text"
+                name="preferableTime"
+                value={preferableTime}
+                onChange={handleChange}
+                placeholder="Enter preferable delivery time"
+              />
+              <br />
+              <select
+                name="sizePrice"
+                value={sizePrice}
+                onChange={handleChange}
+              >
+                <option>size--Price</option>
+                <option>small--₹100</option>
+                <option>medium--₹150</option>
+                <option>Large--₹200</option>
+              </select>
+              <br />
+              <input className={styles.submit} type="submit" value="Book" />
+            </div>
+          </form>
+        </div>
+      </div>
+    );
 }
 
 export default Home
