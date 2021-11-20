@@ -44,7 +44,7 @@ router.delete("/:id", async function (req, res) {
     try {
         const bookings = await Book.findByIdAndDelete(req.params.id).lean();
      return res.status(200).send(bookings);
-    } catch {
+    } catch (err) {
         return res.status(400).send(err.message);
     }
     
