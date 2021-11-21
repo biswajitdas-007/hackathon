@@ -32,7 +32,7 @@ const Track = () => {
     return (
         <div>
             {/* chattyapp */}
-            <h1>Chatty app</h1>
+            <h1>Delivery Agent Page</h1>
         
             <p >
               {chat.message}
@@ -42,12 +42,12 @@ const Track = () => {
         <button onClick={()=>{sendChat("ontheway")}}>Order Dispatch</button>
         <button onClick={() => { sendChat("delivered") }}>Deliverd</button>
         <div>
-          <h1>price are</h1>
+          <h1>Prices</h1>
           <button onClick={() => { sendChat("150") }}>Price: 150</button>
           <button onClick={() => { sendChat("250") }}>Price: 250</button>
           <button onClick={() => { sendChat("350") }}>Price: 350</button>
         </div>
-        <Stack direction="row" spacing={2}>
+        {/* <Stack direction="row" spacing={2}>
         <Button variant="contained" onClick={() => { sendChat("placed") }}>Placed</Button>
         <Button variant="contained" onClick={()=>{sendChat("pickedUp")}}>
           Order Pickedup
@@ -58,7 +58,7 @@ const Track = () => {
           <Button variant="contained" onClick={() => { sendChat("delivered") }}>
          Deliverd
         </Button>
-    </Stack>
+    </Stack> */}
         </div>
     )
 }
