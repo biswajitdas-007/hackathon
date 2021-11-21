@@ -38,7 +38,7 @@ function Home() {
     }
 
     return (
-      <div>
+      <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.name}>
             <p>Parcel</p>
@@ -136,17 +136,6 @@ function Home() {
                 onChange={handleChange}
                 placeholder="Enter preferable delivery time"
               />
-              {/* <br /> */}
-              {/* <select
-                name="sizePrice"
-                value={sizePrice}
-                onChange={handleChange}
-              >
-                <option>size--Price</option>
-                <option>small--₹100</option>
-                <option>medium--₹150</option>
-                <option>Large--₹200</option>
-              </select> */}
               <br />
               <input className={styles.submit} type="submit" value="Book" />
             </div>
