@@ -14,9 +14,11 @@ const StateProvider = ({children}) => {
         }
     }
     const getData = async()=>{
-        const response = await axios.get("http://localhost:8000/book")
-        const data = response.data;
-        setList(data);
+        
+            const response = await axios.get("http://localhost:8000/book")
+            const data = response.data;
+            setList(data);
+    
     }
     // async function getData(){
     //     const response = await axios.get("http://localhost:8000/book")
@@ -30,11 +32,9 @@ const StateProvider = ({children}) => {
         getData()
     }, [])
     const togglePayment = (id) => {
-        axios.put(`http://localhost:8000/book/${id}`, {payment: true})
+        axios.put(`http://localhost:8000/book/${id}`,{payment:true})
             .then(res => {
                 console.log("updtedRes: ", res);
-             
-            //setList(del)
          })
         list.map((item) => {
             return item._id == id ? item.payment = true : item
