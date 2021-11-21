@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import io from "socket.io-client";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import axios from "axios";
 import styles from "./TrackOrder.module.css"
 const Track = () => {
@@ -45,7 +47,18 @@ const Track = () => {
           <button onClick={() => { sendChat("250") }}>Price: 250</button>
           <button onClick={() => { sendChat("350") }}>Price: 350</button>
         </div>
-        
+        <Stack direction="row" spacing={2}>
+        <Button variant="contained" onClick={() => { sendChat("placed") }}>Placed</Button>
+        <Button variant="contained" onClick={()=>{sendChat("pickedUp")}}>
+          Order Pickedup
+        </Button>
+        <Button variant="contained" onClick={()=>{sendChat("ontheway")}}>
+         Order Dispatch
+          </Button>
+          <Button variant="contained" onClick={() => { sendChat("delivered") }}>
+         Deliverd
+        </Button>
+    </Stack>
         </div>
     )
 }

@@ -8,34 +8,32 @@ import { StateContext } from '../../Context/StateProvider';
 import styles from "./MyOrders.module.css";
 function MyOrders() {
      const params = useParams();
-    const { isAuth, listFilter,list, updateList, getData } = useContext(StateContext);
-    //const [list, setList] = useState([]);
-    const [data, setData] = useState([]);
+    const { isAuth, listFilter, updateList } = useContext(StateContext);
+    const [list, setList] = useState([]);
+    //const [data, setData] = useState([]);
     console.log("list: ", list)
     const handleCancel = (id) => {
         axios.delete(`http://localhost:8000/book/${id}`)
          .then(res=>{
              const del = list.filter(item => id !== item._id)
-            updateList(del)
+             updateList(del);
+             setList(del);
          })
     }
-    // async function getData(){
-    //     // const response = await axios.get("http://localhost:8000/book")
-    //     // const data = response.data;
-    //     // setList(data);
-    //     setData(list)
-    // }
+    async function getData(){
+        const response = await axios.get("http://localhost:8000/book")
+        const data = response.data;
+        setList(data);
+    }
     useEffect(() => {
-        getData();
-        console.log("data9080: ",data)
-        
+        getData()
     },[])
     return (
             <>
             <h1>Active Slots</h1>
             <div className={styles.mainCont}>
                 {list && list.map((item) => {
-                console.log(item)
+                console.log("items:23: ",item)
                 return (
                     <>
                         <div className={styles.box} key={item._id}>

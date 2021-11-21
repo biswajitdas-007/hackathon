@@ -49,5 +49,15 @@ router.delete("/:id", async function (req, res) {
     }
     
 })
-
+router.put("/:id", async function (req, res) {
+    try {
+        console.log("erq: ", req.params.id);
+        const bookings = await Book.findByIdAndUpdate(req.params.id, req.body);
+     return res.status(200).send(bookings);
+    } catch (err) {
+        console.log(err)
+        return res.status(400).send(err.message);
+    }
+    
+})
 module.exports = router;
