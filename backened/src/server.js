@@ -6,9 +6,11 @@ const bookController = require("./controller/bookController");
 const userController = require("./controller/user.controller");
 const retailerController = require("./controller/retailer.controller")
 const app = express();
+require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
+const port = process.env.PORT || 8000;
 
 const io = require("socket.io")(server, {
   cors: {
@@ -38,7 +40,7 @@ app.use('/retailer', retailerController);
 
 const start = async () => {
   await connect();
-  app.listen(8000, () => {
+  app.listen(port, () => {
     console.log("listening to port 8000");
   });
 };
