@@ -18,7 +18,7 @@ function CustomerSignUp() {
     const signUp = async (e) => {
         e.preventDefault();
         console.log("data: ", data)
-        const response = await axios.post("http://localhost:8000/user", data);
+        const response = await axios.post("https://product-delivery-app.herokuapp.com/user", data);
         setSignedUp(true)
     }
     return (

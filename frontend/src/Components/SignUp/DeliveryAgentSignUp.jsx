@@ -18,7 +18,7 @@ function DeliveryAgentSignUp() {
     const signUp = async (e) => {
         e.preventDefault();
         console.log("data: ", data)
-      const response = await axios.post("http://localhost:8000/retailer", data);
+      const response = await axios.post("https://product-delivery-app.herokuapp.com/retailer", data);
       setSignedUp(true)
     }
     return (

@@ -26,7 +26,7 @@ function DeliveryAgentLogin() {
     })
   }
   const getData = async() => {
-    const response = await axios.get("http://localhost:8000/retailer")
+    const response = await axios.get("https://product-delivery-app.herokuapp.com/retailer")
         const data = response.data;
         setUserNames(data)
   }

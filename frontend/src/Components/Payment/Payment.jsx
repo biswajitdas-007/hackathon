@@ -37,7 +37,7 @@ function Payment() {
         });
     }, []);
      async function getData() {
-         const { data }  = await axios.get(`http://localhost:8000/book/${params.id}`);
+         const { data }  = await axios.get(`https://product-delivery-app.herokuapp.com/book/${params.id}`);
      console.log(data);
     setProduct(data);
   }

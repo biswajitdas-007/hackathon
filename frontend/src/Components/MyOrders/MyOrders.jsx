@@ -8,26 +8,26 @@ import { StateContext } from '../../Context/StateProvider';
 import styles from "./MyOrders.module.css";
 function MyOrders() {
      const params = useParams();
-    const { isAuth, listFilter, updateList } = useContext(StateContext);
-    const [list, setList] = useState([]);
+    const { isAuth, listFilter, updateList,list , getData} = useContext(StateContext);
+    //const [list, setList] = useState([]);
     //const [data, setData] = useState([]);
     console.log("list: ", list)
     const handleCancel = (id) => {
-        axios.delete(`http://localhost:8000/book/${id}`)
+        axios.delete(`https://product-delivery-app.herokuapp.com/book/${id}`)
          .then(res=>{
              const del = list.filter(item => id !== item._id)
              updateList(del);
-             setList(del);
+             //setList(del);
          })
     }
-    async function getData(){
-        const response = await axios.get("http://localhost:8000/book")
-        const data = response.data;
-        setList(data);
-    }
+    // async function getData(){
+    //     const response = await axios.get("http://localhost:8000/book")
+    //     const data = response.data;
+    //     setList(data);
+    // }
     useEffect(() => {
         getData()
-    },[])
+    },[list])
     return (
             <>
             <h1>Active Slots</h1>

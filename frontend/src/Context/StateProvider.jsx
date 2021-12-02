@@ -15,7 +15,7 @@ const StateProvider = ({children}) => {
     }
     const getData = async()=>{
         
-            const response = await axios.get("http://localhost:8000/book")
+            const response = await axios.get("https://product-delivery-app.herokuapp.com/book")
             const data = response.data;
             setList(data);
     
@@ -32,7 +32,7 @@ const StateProvider = ({children}) => {
         getData()
     }, [])
     const togglePayment = (id) => {
-        axios.put(`http://localhost:8000/book/${id}`,{payment:true})
+        axios.put(`https://product-delivery-app.herokuapp.com/book/${id}`,{payment:true})
             .then(res => {
                 console.log("updtedRes: ", res);
          })
@@ -41,14 +41,14 @@ const StateProvider = ({children}) => {
         })
     }
     const orderCancel = (id) => {
-        axios.delete(`http://localhost:8000/book/${id}`)
+        axios.delete(`https://product-delivery-app.herokuapp.com/book/${id}`)
          .then(res=>{
              const del = list.filter(item => id !== item._id)
             setList(del)
          })
     }
     const listFilter = (id) => {
-        axios.delete(`http://localhost:8000/book/${id}`)
+        axios.delete(`https://product-delivery-app.herokuapp.com/book/${id}`)
          .then(res=>{
              const del = list.filter(item => id !== item._id)
              setList(del)

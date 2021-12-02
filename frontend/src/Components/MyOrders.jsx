@@ -8,7 +8,7 @@ import styles from "./MyOrders.module.css";
 function MyOrders() {
     const [list, setList] = useState([]);
     async function getData(){
-        const response = await axios.get("http://localhost:8000/book")
+        const response = await axios.get("https://product-delivery-app.herokuapp.com/book")
         const data = response.data;
         setList(data);
         console.log(data);

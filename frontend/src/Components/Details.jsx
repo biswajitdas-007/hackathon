@@ -20,7 +20,7 @@ const Details = ({productId}) => {
         setItem(item)
     }
     async function getData(){
-        const response = await axios.get("http://localhost:8000/book")
+        const response = await axios.get("https://product-delivery-app.herokuapp.com/book")
         const data = response.data;
         setData(data);
         filterData(data);
