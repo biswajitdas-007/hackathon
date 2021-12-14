@@ -30,13 +30,15 @@ io.on("connection", (socket) => {
 
 // app.listen(5000, () => console.log("server is active..."));
 
-server.listen(4000, () => {
-  console.log("Server is listening at port 4000...");
-});
+
 
 app.use('/book', bookController);
 app.use('/user', userController);
 app.use('/retailer', retailerController);
+
+server.listen(4000, () => {
+  console.log("Server is listening at port 4000...");
+});
 
 const start = async () => {
   await connect();
@@ -44,5 +46,6 @@ const start = async () => {
     console.log("listening to port 8000");
   });
 };
+
 
 module.exports = start;

@@ -41,7 +41,10 @@ function Home() {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.name}>
-            <p>Parcel</p>
+            <div>
+              <p>Parcel</p>
+              <p>Express</p>
+            </div>
             <img src={Logo} alt="/" />
           </div>
 
@@ -128,7 +131,7 @@ function Home() {
                 placeholder="Enter Pick-up Time"
               />
               <br />
-              <label>Prefarable Time : </label>
+              <label>Expected Delivery Time : </label>
               <input
                 type="text"
                 name="preferableTime"

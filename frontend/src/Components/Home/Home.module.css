@@ -1,24 +1,35 @@
 .header {
   display: grid;
   grid-template-columns: repeat(3, 32%);
-
+    background-color: white !important;
   /* background-color: rgb(105, 177, 177); */
+  color: black;
 }
 .name {
   display: flex;
 }
-.name > p {
+
+.name >div > p:nth-child(1) {
   font-size: xx-large;
   font-weight: bolder;
   margin-left: 30px;
-  margin-top: 10px;
   color: brown;
   margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.name >div > p:nth-child(2) {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-left: 30px;
+  color: brown;
+  margin-right: 0px;
+  margin-top: -10px;
+  margin-bottom: 0px;
 }
 .name > img {
   width: 120px;
   height: 80px;
-  margin-left: -20px;
 }
 
 .menubar {
@@ -70,6 +81,7 @@ input {
 }
 
 label {
+  width: 250px;
   font-size: large;
   font-weight: 500;
 }
