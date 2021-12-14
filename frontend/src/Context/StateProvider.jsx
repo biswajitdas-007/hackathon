@@ -15,7 +15,7 @@ const StateProvider = ({children}) => {
     }
     const getData = async()=>{
         
-            const response = await axios.get("https://product-delivery-app.herokuapp.com/book")
+            const response = await axios.get("http://localhost:8000/book")
             const data = response.data;
             setList(data);
     
@@ -32,7 +32,7 @@ const StateProvider = ({children}) => {
         getData()
     }, [])
     const togglePayment = (id) => {
-        axios.put(`https://product-delivery-app.herokuapp.com/book/${id}`,{payment:true})
+        axios.put(`http://localhost:8000/book/${id}`,{payment:true})
             .then(res => {
                 console.log("updtedRes: ", res);
          })

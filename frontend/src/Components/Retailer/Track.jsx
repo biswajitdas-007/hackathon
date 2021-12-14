@@ -47,7 +47,7 @@ const Track = () => {
           <button onClick={() => { sendChat("250") }}>Price: 250</button>
           <button onClick={() => { sendChat("350") }}>Price: 350</button>
         </div>
-        <Stack direction="row" spacing={2}>
+        {/* <Stack direction="row" spacing={2}>
         <Button variant="contained" onClick={() => { sendChat("placed") }}>Placed</Button>
         <Button variant="contained" onClick={()=>{sendChat("pickedUp")}}>
           Order Pickedup
@@ -58,7 +58,7 @@ const Track = () => {
           <Button variant="contained" onClick={() => { sendChat("delivered") }}>
          Deliverd
         </Button>
-    </Stack>
+    </Stack> */}
         </div>
     )
 }
