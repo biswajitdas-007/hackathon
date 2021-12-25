@@ -63,7 +63,7 @@ const StateProvider = ({children}) => {
         customerAuth ? setCustomerAuth(!customerAuth) : setCustomerAuth(!customerAuth);
     }
     const toggleDeliveryAuth = (token) => {
-        customerAuth ? setDeliveryAuth(!deliveryAuth) : setDeliveryAuth(!deliveryAuth);
+        deliveryAuth ? setDeliveryAuth(!deliveryAuth) : setDeliveryAuth(!deliveryAuth);
     }
     const value = { isAuth, toggleAuth, customerAuth, toggleCustomerAuth, list, togglePayment, deliveryAuth, toggleDeliveryAuth, listFilter,getItems, updateList, getData };
     return (

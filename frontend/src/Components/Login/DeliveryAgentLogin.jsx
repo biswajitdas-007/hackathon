@@ -11,7 +11,6 @@ const initState = {
 function DeliveryAgentLogin() {
   const [userNames, setUserNames] = useState([]);
   const [data, setData] = useState(initState);
-  const [auth, setAuth] = useState(false);
   const { toggleDeliveryAuth, deliveryAuth } = useContext(StateContext);
     const { username, password } = data;
   function handleChange(e)
@@ -20,10 +19,16 @@ function DeliveryAgentLogin() {
         setData({ ...data, [name]: value });
   }
   const handleLogin = () => {
-    console.log(data, userNames)
+    let auth = false;
     userNames.map((user) => {
-      return user.username == data.username && user.password == data.password ? toggleDeliveryAuth(): alert("Wrong Credentials")
+       if (user.username === data.username && user.password === data.password) {
+         toggleDeliveryAuth();
+         auth = true;
+      } 
     })
+    if (!auth) {
+      alert('Wrong credentials !!!')
+    }
   }
   const getData = async() => {
     const response = await axios.get("https://product-delivery-app.herokuapp.com/retailer")
@@ -48,7 +53,6 @@ function DeliveryAgentLogin() {
                 onChange={handleChange} />
         <br />
         <br />
-        {console.log(deliveryAuth)}
         {deliveryAuth && <Redirect to="/track"/> }
         <Link to={`/deliveryagentlogin`}> <button className={styles.btn1} onClick={handleLogin} >Login</button> </Link>
         <br />

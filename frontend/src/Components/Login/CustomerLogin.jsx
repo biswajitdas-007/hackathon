@@ -7,14 +7,9 @@ const initState = {
     username: "",
     password:"",
 }
-const routes = {
-  home: "/"
-}
 function CustomerLogin() {
-  const mountedRef = useRef(true)
   const [userNames, setUserNames] = useState([]);
   const [data, setData] = useState(initState);
-  const [auth, setAuth] = useState(false);
   const { username, password } = data;
   const { toggleCustomerAuth, customerAuth } = useContext(StateContext);
   function handleChange(e)
@@ -23,9 +18,7 @@ function CustomerLogin() {
         setData({ ...data, [name]: value });
   }
   const handleLogin = () => {
-    console.log(data, userNames)
     var isCorrect = userNames.filter((user) => {
-      console.log(data.username, data.password, user.username, user.password)
      if ((user.username == data.username) && (user.password == data.password)) {
        return true;
      } else {
@@ -35,7 +28,7 @@ function CustomerLogin() {
     if (isCorrect.length > 0) {
       toggleCustomerAuth()
     } else {
-      console.log("Bye")
+      alert("Wrong credentials !!!")
     }
   }
   const getData = async() => {
@@ -44,8 +37,6 @@ function CustomerLogin() {
         setUserNames(data)
   }
   useEffect(() => {
-     
-      mountedRef.current = false
     getData();
   },[])
     return (
